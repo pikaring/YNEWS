@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<link rel="stylesheet" href="css/common.css" type="text/css" /> 
+<!-- 
+ -->
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<title>TellYourWeather</title>
+</head>
+<body>
+<div id="top">
+<div id="header">
+</div><!-- /#header-->
+<div id="contents">
+<h1><a href="index.html">ãLéñÇÃçXêVë¨ìx</a></h1>
+<form>
+<select id="seconds" size="4">
+	<option value="1">2ïb</option>
+	<option value="2">4ïb</option>
+	<option value="3">6ïb</option>
+	<option value="4">8ïb</option>
+	<option value="5" selected>10ïb</option>
+	<option value="6">12ïb</option>
+	<option value="7">14ïb</option>
+	<option value="8">16ïb</option>
+	<option value="9">18ïb</option>
+	<option value="10">20ïb</option>
+</select>
+<p><input type="submit" id="b-save" value="save"></input></p>
+<p><input type="submit" id="b-cancel" value="cancel"></input></p>
+</form>
+
+</div><!-- /#contents-->
+<div id="footer">
+</div><!-- /#footer-->
+</div><!-- /#top-->
+
+<script>
+
+function saveOptions() {
+	var seconds = parseInt($('#seconds').val());
+	var sendValue =[seconds];
+<!--alert(sendValue);-->	
+	return sendValue;
+}
+
+$().ready(function() 
+	{
+	$("#b-cancel").click(function() 
+		{
+		console.log("Canceling");
+		document.location = "pebblejs://close";
+	});
+	$("#b-save").click(function() {
+		console.log("Save");
+		var location = "pebblejs://close#" + encodeURIComponent(JSON.stringify(saveOptions()));
+		document.location = location;
+	});
+});
+</script>
+</body>
+</html>
