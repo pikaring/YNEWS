@@ -12,6 +12,18 @@
 <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript">
+<!--
+function changeDisabled() {
+    if ( document.Form1["number"][2].checked ) { // 「その他」のラジオボタンをクリックしたとき
+        document . Form1["inputNumber"] . disabled = false; // 「その他」のラジオボタンの横のテキスト入力欄を有効化
+    } else { // 「その他」のラジオボタン以外をクリックしたとき
+        document . Form1["inputNumber"] . disabled = true; // 「その他」のラジオボタンの横のテキスト入力欄を無効化
+    }
+}
+window.onload = changeDisabled; // ページを表示したとき、changeDisabled() を呼び出す
+// -->
+</script>
 <title>BitCoinViewer</title>
 </head>
 <body>
@@ -62,6 +74,13 @@
 <option value="27">eth_jpy</option>
 <option value="28">xem_jpy</option>
 </select>
+</form>
+<h2>Indicator</h2>
+<input type="radio" name="number" value="vwap" id="vwap" checked><label for="vwap">vwap</label>
+<input type="radio" name="number" value="price" id="price"><label for="price">price</label>
+<input type="text" name="inputNumber" size="10">
+<h2>Save</h2>
+<form>
 <p><input type="submit" id="b-save" value="save"></input></p>
 <p><input type="submit" id="b-cancel" value="cancel"></input></p>
 </form>
@@ -75,7 +94,8 @@
 function saveOptions() {
 	var interval = parseInt($('#interval').val());
 	var currency = parseInt($('#currency').val());
-	var sendValue =[interval,currency];
+	var indicator = parseInt($('#inputNumber').val()););
+	var sendValue =[interval,currency,indicator];
 <!--alert(sendValue);-->	
 	return sendValue;
 }
