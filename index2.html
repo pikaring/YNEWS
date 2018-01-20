@@ -20,7 +20,7 @@
 </div><!-- /#header-->
 <div id="contents">
 
-<h1>BitcoinViewer Ver.0.41</h1>
+<h1>BitcoinViewer Ver.0.42</h1>
 <h2>Interval</h2>
 <form name="form1" id="id_form1" method="post" action="#">
 <select name="interval" id="id_interval" size="5">
@@ -63,22 +63,6 @@
 </select>
 <h2>Indicator</h2>
 
-<script type="text/javascript">
-<!--
-$(function() {
-    $("[name='password_edit_flag']").click(function(){
-        var num = $("[name=password_edit_flag]:checked").val();
-        if ( num == 1 ){
-            $("#id_price").removeAttr("disabled");
-            $("#id_price").css("background-color","#ffffff");
-        } else {
-            $("#id_price").attr("disabled", "disabled");
-            $("#id_price").css("background-color","#d2d1c6");
-        }
-    });
-});
-// -->
-</script>
 <input type="radio" name="password_edit_flag" id="passwordEditFlag0" class="radio" value="0" checked="checked"  />
 <label for="passwordEditFlag0">VWAP(Volume Weighted Average Price)</label>
 
@@ -97,6 +81,20 @@ $(function() {
 </div><!-- /#top-->
 
 <script>
+
+$(function() {
+    $("[name='password_edit_flag']").click(function(){
+        var num = $("[name=password_edit_flag]:checked").val();
+        if ( num == 1 ){
+            $("#id_price").removeAttr("disabled");
+            $("#id_price").css("background-color","#ffffff");
+        } else {
+            $("#id_price").attr("disabled", "disabled");
+            $("#id_price").css("background-color","#d2d1c6");
+        }
+    });
+});
+
 function saveOptions() {
 	var interval = parseInt($('#id_interval').val());
 	var currency = parseInt($('#id_currency').val());
